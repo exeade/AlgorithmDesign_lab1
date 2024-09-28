@@ -1,4 +1,6 @@
-﻿namespace asd1;
+﻿using System.Diagnostics;
+
+namespace asd1;
 
 public static class ArrayGenerator
 {
@@ -162,8 +164,13 @@ static class Program
         
         ArrayGenerator.Generate(size, unsortedFile);
         
+        Stopwatch time = new Stopwatch();
+        time.Start();
         NaturalMergeSort.ExternalSort(unsortedFile);
+        time.Stop();
+        Console.WriteLine($"Sorting took {time.ElapsedMilliseconds} ms.");
         
-        Console.WriteLine("File was successfully sorted!");
+        Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
     }
 }
